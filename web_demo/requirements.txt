@@ -1,0 +1,13 @@
+decord==0.6.0
+editdistance==0.8.1
+gradio==5.29.1
+numpy==2.2.6
+Pillow==11.2.1
+Requests==2.32.3
+scikit-image
+speechbrain==1.0.3
+torch==2.7.0
+torchaudio==2.7.0
+tqdm==4.67.1
+transformers==4.51.3
+ujson==5.10.0
