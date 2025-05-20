@@ -30,6 +30,7 @@ from cosy24k_vocoder import Cosy24kVocoder
 vocoder = Cosy24kVocoder.from_pretrained(os.path.join(COSY_VOCODER, "hift.pt"))
 vocoder = vocoder.cuda()
 
+DEBUG = False
 
 def init_model():
     model = AutoModelForCausalLM.from_pretrained(
@@ -695,12 +696,13 @@ def benchmark_inference(data, log):
         
         show_text, full_text, _ = simple_llm_query("", question, image, audio)
         all_response.append(show_text)
-        log[id] = {
-            "question": question,
-            "predict": show_text,
-            # "full_text": full_text,
-            "answer": answer,
-        }
+        if DEBUG:
+            log[id] = {
+                "question": question,
+                "predict": show_text,
+                # "full_text": full_text,
+                "answer": answer,
+            }
     
     return all_response
 
@@ -717,7 +719,12 @@ def metrics_calculation(all_response, all_answers, all_choices):
 
 # 启动应用
 if __name__ == "__main__":
-    DEBUG = False
+    
+    model_path_dict = {
+        "Baichuan-omni-1.5": "/root/.cache/huggingface/hub/models--baichuan-inc--Baichuan-Omni-1d5/snapshots/0b86202f48ec5e273e1aef3b67caf0f4e7cca1b0",
+        "Baichuan-omni-1.5-base": "/root/.cache/huggingface/hub/models--baichuan-inc--Baichuan-Omni-1d5-base/snapshots/0b86202f48ec5e273e1aef3b67caf0f4e7cca1b0",
+    }
+    
     if DEBUG:
         logging.basicConfig(level=logging.DEBUG)
     else:
@@ -728,26 +735,30 @@ if __name__ == "__main__":
         dataset_name_or_path="TOCFL-MultiBench/TOCFL-MultiBench.json",
         prompt_template_path="prompt/base.txt",
     )
+    merge_log = {}
     
     image_question_data = data.filter(lambda x: x["image"] is not None)
     audio_question_data = data.filter(lambda x: x["audio"] is not None)
-    image_log = {}
-    audio_log = {}
-    image_response = benchmark_inference(image_question_data, image_log)
-    audio_response = benchmark_inference(audio_question_data, audio_log)
     
+    for model_name, model_path in model_path_dict.items():
+        MODEL_PATH = model_path
+        image_log = {}
+        audio_log = {}
+        image_response = benchmark_inference(image_question_data, image_log)
+        audio_response = benchmark_inference(audio_question_data, audio_log)
+        
 
-    all_choices = ["A", "B", "C", "D"]
-    image_metrics = metrics_calculation(image_response, image_question_data["answer"], all_choices)
-    audio_metrics = metrics_calculation(audio_response, audio_question_data["answer"], all_choices)
+        all_choices = ["A", "B", "C", "D"]
+        image_metrics = metrics_calculation(image_response, image_question_data["answer"], all_choices)
+        audio_metrics = metrics_calculation(audio_response, audio_question_data["answer"], all_choices)
 
-    image_log["metrics"] = image_metrics
-    audio_log["metrics"] = audio_metrics
-    
-    merge_log = {
-        "image": image_log,
-        "audio": audio_log,
-    }
+        image_log["metrics"] = image_metrics
+        audio_log["metrics"] = audio_metrics
+        
+        merge_log[model_name] = {
+            "image": image_log,
+            "audio": audio_log,
+        }    
 
     with open("merge_log.json", "w") as f:
         json.dump(merge_log, f, ensure_ascii=False)
