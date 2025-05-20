@@ -683,6 +683,37 @@ def convert_webm_to_mp4(input_file, output_file):
 def simple_llm_query(system_prompt, query, image_path=None, autio_path=None):
     return generate_one_turn(autio_path, system_prompt, query, image_path, None, False)
 
+def benchmark_inference(data, log):
+    all_response = []
+    length = len(data)
+    for i in tqdm(range(length)):
+        id = data["id"][i]
+        question = data["question"][i]
+        answer = data["answer"][i]
+        image = data["image"][i]
+        audio = data["audio"][i]
+        
+        show_text, full_text, _ = simple_llm_query("", question, image, audio)
+        all_response.append(show_text)
+        log[id] = {
+            "question": question,
+            "predict": show_text,
+            # "full_text": full_text,
+            "answer": answer,
+        }
+    
+    return all_response
+
+def metrics_calculation(all_response, all_answers, all_choices):
+    metrics = template.calculate_metrics(
+        all_choices=all_choices,
+        all_answers=all_answers,
+        all_response=all_response,
+    )
+    logging.info("metrics: %s", metrics)
+    logging.debug("all_response: %s", all_response)
+    logging.debug("all_answers: %s", all_answers)
+    return metrics
 
 # 启动应用
 if __name__ == "__main__":
@@ -692,46 +723,31 @@ if __name__ == "__main__":
     else:
         logging.basicConfig(level=logging.INFO)
 
-    log = {}
+    
     data = template.load_data(
         dataset_name_or_path="TOCFL-MultiBench/TOCFL-MultiBench.json",
         prompt_template_path="prompt/base.txt",
     )
-    ids = data["id"]
-    length = len(ids)
-    if DEBUG:
-        length = 50
-        
-    all_response = []
-    for i in tqdm(range(length)):
-        id = ids[i]
-        question = data["question"][i]
-        answer = data["answer"][i]
-        image = data["image"][i]
-        audio = data["audio"][i]
-
-        show_text, full_text, _ = simple_llm_query("", question, image, audio)
-        all_response.append(show_text)
-        log[id] = {
-            "question": question,
-            "predict": show_text,
-            # "full_text": full_text,
-            "answer": answer,
-        }
+    
+    image_question_data = data.filter(lambda x: x["image"] is not None)
+    audio_question_data = data.filter(lambda x: x["audio"] is not None)
+    image_log = {}
+    audio_log = {}
+    image_response = benchmark_inference(image_question_data, image_log)
+    audio_response = benchmark_inference(audio_question_data, audio_log)
+    
 
     all_choices = ["A", "B", "C", "D"]
-    all_answers = data["answer"]
-    if DEBUG:
-        all_answers = all_answers[:50]
+    image_metrics = metrics_calculation(image_response, image_question_data["answer"], all_choices)
+    audio_metrics = metrics_calculation(audio_response, audio_question_data["answer"], all_choices)
+
+    image_log["metrics"] = image_metrics
+    audio_log["metrics"] = audio_metrics
     
-    metrics = template.calculate_metrics(
-        all_choices=all_choices,
-        all_answers=all_answers,
-        all_response=all_response,
-    )
-    logging.info("metrics: %s", metrics)
+    merge_log = {
+        "image": image_log,
+        "audio": audio_log,
+    }
 
-    log["metrics"] = metrics
-
-    with open("log.json", "w") as f:
-        json.dump(log, f, ensure_ascii=False)
+    with open("merge_log.json", "w") as f:
+        json.dump(merge_log, f, ensure_ascii=False)
