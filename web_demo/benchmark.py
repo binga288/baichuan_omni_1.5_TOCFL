@@ -729,7 +729,7 @@ if __name__ == "__main__":
         all_answers=all_answers,
         all_response=all_response,
     )
-    print(metrics)
+    logging.info("metrics: %s", metrics)
 
     log["metrics"] = metrics
 
