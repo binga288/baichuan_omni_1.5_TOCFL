@@ -720,7 +720,10 @@ if __name__ == "__main__":
         }
 
     all_choices = ["A", "B", "C", "D"]
-    all_answers = [data["answer"][i] for i in range(length)]
+    all_answers = data["answer"]
+    if DEBUG:
+        all_answers = all_answers[:50]
+    
     metrics = template.calculate_metrics(
         all_choices=all_choices,
         all_answers=all_answers,
