@@ -18,6 +18,8 @@ import cv2
 import template
 from tqdm import tqdm
 import logging
+from transformers import set_seed
+
 
 os.makedirs(g_cache_dir, exist_ok=True)
 os.makedirs(g_cache_dir + "/image", exist_ok=True)
@@ -554,6 +556,7 @@ def generate_one_turn(
     input_video_file,
     audiogen_flag=True,
 ):
+    start_time = time.time()
     global g_history
     global g_turn_i
     global g_cache_dir
@@ -644,20 +647,11 @@ def generate_one_turn(
 
     # clear_history()
     logging.debug("message: %s", message)
-    # for show_text, full_text, wave_segment in generate_response(message, audiogen_flag):
-    #     if wave_segment is not None and audiogen_flag:
-    #         post = postprocess_messages(g_history)
-    #         yield wave_segment, show_text, postprocess_messages(g_history)
-    #     else:
-    #         post = postprocess_messages(g_history)
-    #         yield None, show_text, postprocess_messages(g_history)
-    return generate_response(message, audiogen_flag)
-
-    # g_history.append({
-    #     'role': 'assistant',
-    #     'content': full_text,
-    # })
-    # g_turn_i += 1
+    
+    show_text, full_text, wave_segment = generate_response(message, audiogen_flag)
+    end_time = time.time()
+    logging.info("Inference time: %s", end_time - start_time)
+    return show_text, full_text, wave_segment, end_time - start_time
 
 
 def convert_webm_to_mp4(input_file, output_file):
@@ -694,14 +688,19 @@ def benchmark_inference(data, log):
         image = data["image"][i]
         audio = data["audio"][i]
         
-        show_text, full_text, _ = simple_llm_query("", question, image, audio)
+        show_text, full_text, _, inference_time = simple_llm_query("", question, image, audio)
         all_response.append(show_text)
         if DEBUG:
-            log[id] = {
+            log["DEUBG"][id] = {
                 "question": question,
                 "predict": show_text,
                 # "full_text": full_text,
                 "answer": answer,
+                "inference_time": inference_time,
+            }
+        else:
+            log["DEBUG"][id] = {
+                "inference_time": inference_time,
             }
     
     return all_response
@@ -718,11 +717,12 @@ def metrics_calculation(all_response, all_answers, all_choices):
     return metrics
 
 # 启动应用
-if __name__ == "__main__":
-    
+if __name__ == "__main__":   
+    set_seed(11207330)
+     
     model_path_dict = {
         "Baichuan-omni-1.5": "/root/.cache/huggingface/hub/models--baichuan-inc--Baichuan-Omni-1d5/snapshots/0b86202f48ec5e273e1aef3b67caf0f4e7cca1b0",
-        "Baichuan-omni-1.5-base": "/root/.cache/huggingface/hub/models--baichuan-inc--Baichuan-Omni-1d5-base/snapshots/0b86202f48ec5e273e1aef3b67caf0f4e7cca1b0",
+        "Baichuan-omni-1.5-base": "/root/.cache/huggingface/hub/models--baichuan-inc--Baichuan-Omni-1d5-Base/snapshots/9a67781e70e72322d509f27c9d52799c856e92e9",
     }
     
     if DEBUG:
@@ -741,12 +741,18 @@ if __name__ == "__main__":
     audio_question_data = data.filter(lambda x: x["audio"] is not None)
     
     for model_name, model_path in model_path_dict.items():
+        start_time = time.time()
         MODEL_PATH = model_path
-        image_log = {}
-        audio_log = {}
+        image_log = {
+            "DEBUG": {},
+        }
+        audio_log = {
+            "DEBUG": {},
+        }
         image_response = benchmark_inference(image_question_data, image_log)
         audio_response = benchmark_inference(audio_question_data, audio_log)
         
+        end_time = time.time()
 
         all_choices = ["A", "B", "C", "D"]
         image_metrics = metrics_calculation(image_response, image_question_data["answer"], all_choices)
@@ -754,11 +760,13 @@ if __name__ == "__main__":
 
         image_log["metrics"] = image_metrics
         audio_log["metrics"] = audio_metrics
-        
+                
+        logging.info("Total time: %s", end_time - start_time)
         merge_log[model_name] = {
             "image": image_log,
             "audio": audio_log,
-        }    
-
+            "total_time": end_time - start_time,
+        }        
+    
     with open("merge_log.json", "w") as f:
-        json.dump(merge_log, f, ensure_ascii=False)
+            json.dump(merge_log, f, ensure_ascii=False)
