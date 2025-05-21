@@ -3,22 +3,18 @@ revision = 2
 requires-python = ">=3.11"
 resolution-markers = [
     "python_full_version >= '3.13' and sys_platform == 'darwin'",
-    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
     "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
     "python_full_version >= '3.13' and sys_platform != 'darwin' and sys_platform != 'linux'",
     "python_full_version == '3.12.*' and sys_platform == 'darwin'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
     "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
     "python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
     "python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
     "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
     "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
+    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
+    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
+    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
 ]
-conflicts = [[
-    { package = "baichuan-omni-1-5", extra = "cpu" },
-    { package = "baichuan-omni-1-5", extra = "cu124" },
-]]
 
 [[package]]
 name = "absl-py"
@@ -27,28 +23,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/7a/8f/fc001b92ecc467cc32ab38398bd0bfb45df46e7523bf33c2ad22a505f06e/absl-py-2.1.0.tar.gz", hash = "sha256:7820790efbb316739cde8b4e19357243fc3608a152024288513dd968d7d959ff", size = 118055, upload-time = "2024-01-16T22:14:26.154Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a2/ad/e0d3c824784ff121c03cc031f944bc7e139a8f1870ffd2845cc2dd76f6c4/absl_py-2.1.0-py3-none-any.whl", hash = "sha256:526a04eadab8b4ee719ce68f204172ead1027549089702d99b9059f129ff1308", size = 133706, upload-time = "2024-01-16T22:14:24.055Z" },
-]
-
-[[package]]
-name = "accelerate"
-version = "1.7.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "huggingface-hub" },
-    { name = "numpy" },
-    { name = "packaging" },
-    { name = "psutil" },
-    { name = "pyyaml" },
-    { name = "safetensors" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/97/33/47bbd507e3a851d33d19ce7b2141c5ea3689bfae91ba168044d7db24b0e9/accelerate-1.7.0.tar.gz", hash = "sha256:e8a2a5503d6237b9eee73cc8d36cf543f9c2d8dd2c6713450b322f5e6d53a610", size = 376026, upload-time = "2025-05-15T10:00:52.117Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/f8/bb/be8146c196ad6e4dec78385d91e92591f8a433576c4e04c342a636fcd811/accelerate-1.7.0-py3-none-any.whl", hash = "sha256:cf57165cca28769c6cf2650812371c81b18e05743dfa3c748524b1bb4f2b272f", size = 362095, upload-time = "2025-05-15T10:00:49.914Z" },
 ]
 
 [[package]]
@@ -143,20 +117,6 @@ wheels = [
 ]
 
 [[package]]
-name = "alembic"
-version = "1.15.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "mako" },
-    { name = "sqlalchemy" },
-    { name = "typing-extensions" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/e6/57/e314c31b261d1e8a5a5f1908065b4ff98270a778ce7579bd4254477209a7/alembic-1.15.2.tar.gz", hash = "sha256:1c72391bbdeffccfe317eefba686cb9a3c078005478885413b95c3b26c57a8a7", size = 1925573, upload-time = "2025-03-28T13:52:00.443Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/41/18/d89a443ed1ab9bcda16264716f809c663866d4ca8de218aa78fd50b38ead/alembic-1.15.2-py3-none-any.whl", hash = "sha256:2e76bd916d547f6900ec4bb5a90aeac1485d2c92536923d0b138c02b126edc53", size = 231911, upload-time = "2025-03-28T13:52:02.218Z" },
-]
-
-[[package]]
 name = "aliyun-python-sdk-core"
 version = "2.15.1"
 source = { registry = "https://pypi.org/simple" }
@@ -187,7 +147,7 @@ dependencies = [
     { name = "jsonschema" },
     { name = "narwhals" },
     { name = "packaging" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/68/d6/df7bcf01a2ea10827fb9fe6efcd11ff47366875a3e9069a81b0771b581ad/altair-5.4.0.tar.gz", hash = "sha256:27c69e93d85b7bb3c98fa3626ef7e6bc6939a1466a55a8f8bf68c4bff31cf030", size = 650113, upload-time = "2024-08-11T08:00:10.136Z" }
 wheels = [
@@ -378,7 +338,6 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "absl-py" },
-    { name = "accelerate" },
     { name = "aiofiles" },
     { name = "aiohappyeyeballs" },
     { name = "aiohttp" },
@@ -434,14 +393,12 @@ dependencies = [
     { name = "cython" },
     { name = "dacite" },
     { name = "dataclasses-json" },
-    { name = "dataset" },
     { name = "datasets" },
     { name = "dateparser" },
     { name = "datetime" },
     { name = "debugpy" },
     { name = "decorator" },
     { name = "decord" },
-    { name = "deepspeed" },
     { name = "defusedxml" },
     { name = "deprecated" },
     { name = "diffusers" },
@@ -467,7 +424,6 @@ dependencies = [
     { name = "fiftyone-db" },
     { name = "filelock" },
     { name = "fire" },
-    { name = "flash-attn" },
     { name = "flask" },
     { name = "flatbuffers" },
     { name = "fonttools" },
@@ -664,7 +620,6 @@ dependencies = [
     { name = "sentencepiece" },
     { name = "sentry-sdk" },
     { name = "setproctitle" },
-    { name = "setuptools" },
     { name = "shellingham" },
     { name = "smart-open" },
     { name = "smmap" },
@@ -674,7 +629,6 @@ dependencies = [
     { name = "soundfile" },
     { name = "soupsieve" },
     { name = "soxr" },
-    { name = "speechbrain" },
     { name = "sphn" },
     { name = "spinners" },
     { name = "srsly" },
@@ -705,19 +659,6 @@ dependencies = [
     { name = "tokenizers" },
     { name = "toml" },
     { name = "tomlkit" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "extra == 'extra-17-baichuan-omni-1-5-cu124'" },
-    { name = "torchvision", version = "0.19.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchvision", version = "0.19.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchvision", version = "0.19.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchvision", version = "0.19.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "extra == 'extra-17-baichuan-omni-1-5-cu124'" },
     { name = "tornado" },
     { name = "tqdm" },
     { name = "transformer-engine" },
@@ -737,7 +678,6 @@ dependencies = [
     { name = "universal-analytics-python3" },
     { name = "urllib3" },
     { name = "uvicorn" },
-    { name = "vector-quantize-pytorch" },
     { name = "video2dataset" },
     { name = "voxel51-eta" },
     { name = "wandb" },
@@ -767,25 +707,16 @@ dependencies = [
 ]
 
 [package.optional-dependencies]
-cpu = [
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchvision", version = "0.19.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchvision", version = "0.19.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
 cu124 = [
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" } },
-    { name = "torchvision", version = "0.19.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" } },
+    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
+    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "platform_machine != 'aarch64' or sys_platform != 'linux'" },
+    { name = "torchaudio" },
+    { name = "torchvision" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "absl-py", specifier = "==2.1.0" },
-    { name = "accelerate", specifier = ">=1.7.0" },
     { name = "aiofiles", specifier = "==23.2.1" },
     { name = "aiohappyeyeballs", specifier = "==2.3.5" },
     { name = "aiohttp", specifier = "==3.10.5" },
@@ -841,14 +772,12 @@ requires-dist = [
     { name = "cython", specifier = "==3.0.11" },
     { name = "dacite", specifier = "==1.7.0" },
     { name = "dataclasses-json", specifier = "==0.6.7" },
-    { name = "dataset", specifier = ">=1.6.2" },
     { name = "datasets", specifier = "==2.21.0" },
     { name = "dateparser", specifier = "==1.1.8" },
     { name = "datetime", specifier = "==5.5" },
     { name = "debugpy", specifier = "==1.8.5" },
     { name = "decorator", specifier = "==4.4.2" },
     { name = "decord", specifier = "==0.6.0" },
-    { name = "deepspeed", specifier = "==0.14.4" },
     { name = "defusedxml", specifier = "==0.7.1" },
     { name = "deprecated", specifier = "==1.2.14" },
     { name = "diffusers", specifier = "==0.24.0" },
@@ -874,7 +803,6 @@ requires-dist = [
     { name = "fiftyone-db", specifier = "==1.1.7" },
     { name = "filelock", specifier = "==3.13.1" },
     { name = "fire", specifier = "==0.4.0" },
-    { name = "flash-attn", specifier = "==2.6.3" },
     { name = "flask", specifier = "==3.0.3" },
     { name = "flatbuffers", specifier = "==24.3.25" },
     { name = "fonttools", specifier = "==4.53.1" },
@@ -1071,7 +999,6 @@ requires-dist = [
     { name = "sentencepiece", specifier = "==0.2.0" },
     { name = "sentry-sdk", specifier = "==2.13.0" },
     { name = "setproctitle", specifier = "==1.3.3" },
-    { name = "setuptools", specifier = ">=80.7.1" },
     { name = "shellingham", specifier = "==1.5.4" },
     { name = "smart-open", specifier = "==6.4.0" },
     { name = "smmap", specifier = "==5.0.1" },
@@ -1081,7 +1008,6 @@ requires-dist = [
     { name = "soundfile", specifier = "==0.12.1" },
     { name = "soupsieve", specifier = "==2.6" },
     { name = "soxr", specifier = "==0.4.0" },
-    { name = "speechbrain", specifier = "==1.0.3" },
     { name = "sphn", specifier = "==0.1.4" },
     { name = "spinners", specifier = "==0.0.24" },
     { name = "srsly", specifier = "==2.4.8" },
@@ -1112,14 +1038,8 @@ requires-dist = [
     { name = "tokenizers", specifier = "==0.20" },
     { name = "toml", specifier = "==0.10.2" },
     { name = "tomlkit", specifier = "==0.12.0" },
-    { name = "torch", specifier = "==2.4.1" },
-    { name = "torch", marker = "extra == 'cpu'", specifier = "==2.4.1", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "baichuan-omni-1-5", extra = "cpu" } },
     { name = "torch", marker = "extra == 'cu124'", specifier = "==2.4.1", index = "https://download.pytorch.org/whl/cu124", conflict = { package = "baichuan-omni-1-5", extra = "cu124" } },
-    { name = "torchaudio", specifier = "==2.4.1" },
-    { name = "torchaudio", marker = "extra == 'cpu'", specifier = "==2.4.1", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "baichuan-omni-1-5", extra = "cpu" } },
     { name = "torchaudio", marker = "extra == 'cu124'", specifier = "==2.4.1", index = "https://download.pytorch.org/whl/cu124", conflict = { package = "baichuan-omni-1-5", extra = "cu124" } },
-    { name = "torchvision", specifier = "==0.19.1" },
-    { name = "torchvision", marker = "extra == 'cpu'", specifier = "==0.19.1", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "baichuan-omni-1-5", extra = "cpu" } },
     { name = "torchvision", marker = "extra == 'cu124'", specifier = "==0.19.1", index = "https://download.pytorch.org/whl/cu124", conflict = { package = "baichuan-omni-1-5", extra = "cu124" } },
     { name = "tornado", specifier = "==6.4.1" },
     { name = "tqdm", specifier = "==4.66.5" },
@@ -1140,7 +1060,6 @@ requires-dist = [
     { name = "universal-analytics-python3", specifier = "==1.1.1" },
     { name = "urllib3", specifier = "==2.2.2" },
     { name = "uvicorn", specifier = "==0.30.6" },
-    { name = "vector-quantize-pytorch", specifier = ">=1.14.7" },
     { name = "video2dataset", specifier = "==1.0.0" },
     { name = "voxel51-eta", specifier = "==0.13.0" },
     { name = "wandb", specifier = "==0.17.8" },
@@ -1168,16 +1087,7 @@ requires-dist = [
     { name = "zope-event", specifier = "==5.0" },
     { name = "zope-interface", specifier = "==7.0.3" },
 ]
-provides-extras = ["cpu", "cu124"]
-
-[[package]]
-name = "banal"
-version = "1.0.6"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/8c/a7/3301a69b4a31f7324b99332d758ae8da691f7f865ccd1b2adcd973c45344/banal-1.0.6.tar.gz", hash = "sha256:2fe02c9305f53168441948f4a03dfbfa2eacc73db30db4a93309083cb0e250a5", size = 4827, upload-time = "2021-02-24T13:10:21.237Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ae/c4/7f6e6a539cc6b2da4da3b6a58d5e6f9342c870522ee46d41f8cbd2156953/banal-1.0.6-py2.py3-none-any.whl", hash = "sha256:877aacb16b17f8fa4fd29a7c44515c5a23dc1a7b26078bc41dd34829117d85e1", size = 6069, upload-time = "2021-02-24T13:10:20.29Z" },
-]
+provides-extras = ["cu124"]
 
 [[package]]
 name = "bangla"
@@ -1231,7 +1141,7 @@ name = "blessed"
 version = "1.20.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "jinxed", marker = "sys_platform == 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "jinxed", marker = "sys_platform == 'win32'" },
     { name = "six" },
     { name = "wcwidth" },
 ]
@@ -1546,7 +1456,7 @@ name = "click"
 version = "8.1.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz", hash = "sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de", size = 336121, upload-time = "2023-08-17T17:29:11.868Z" }
 wheels = [
@@ -1659,7 +1569,7 @@ name = "cryptography"
 version = "43.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cffi", marker = "platform_python_implementation != 'PyPy' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "cffi", marker = "platform_python_implementation != 'PyPy'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/69/ec/9fb9dcf4f91f0e5e76de597256c43eedefd8423aa59be95c70c4c3db426a/cryptography-43.0.0.tar.gz", hash = "sha256:b88075ada2d51aa9f18283532c9f60e72170041bba88d7f37e49cbb10275299e", size = 686873, upload-time = "2024-07-20T16:39:26.235Z" }
 wheels = [
@@ -1779,20 +1689,6 @@ wheels = [
 ]
 
 [[package]]
-name = "dataset"
-version = "1.6.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "alembic" },
-    { name = "banal" },
-    { name = "sqlalchemy" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/64/76/3acb02865156b4deee2a19d919b120c9d6a7a17e76fd1dcb2b68e0ed04c3/dataset-1.6.2.tar.gz", hash = "sha256:77d362118f67a8cbb4848dbd30ab362b9fa7cfebdbfaf426c9c500cb38969a99", size = 20584, upload-time = "2023-07-12T08:54:12.117Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9f/4d/f74a514b5c4efb5c1546160597715cd6096273d7173b36a3187d2afb663a/dataset-1.6.2-py2.py3-none-any.whl", hash = "sha256:dcca9ba7658473d3082b1adf87a650252a1cd665705b73fa7d4ee32116a107b9", size = 18133, upload-time = "2023-07-12T08:54:10.144Z" },
-]
-
-[[package]]
 name = "datasets"
 version = "2.21.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1882,28 +1778,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/11/79/936af42edf90a7bd4e41a6cac89c913d4b47fa48a26b042d5129a9242ee3/decord-0.6.0-py3-none-manylinux2010_x86_64.whl", hash = "sha256:51997f20be8958e23b7c4061ba45d0efcd86bffd5fe81c695d0befee0d442976", size = 13602299, upload-time = "2021-06-14T21:30:55.486Z" },
     { url = "https://files.pythonhosted.org/packages/6c/be/e15b5b866da452e62635a7b27513f31cb581fa2ea9cc9b768b535d62a955/decord-0.6.0-py3-none-win_amd64.whl", hash = "sha256:02665d7c4f1193a330205a791bc128f7e108eb6ae5b67144437a02f700943bad", size = 24733380, upload-time = "2021-06-14T21:30:57.766Z" },
 ]
-
-[[package]]
-name = "deepspeed"
-version = "0.14.4"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "hjson" },
-    { name = "ninja" },
-    { name = "numpy" },
-    { name = "nvidia-ml-py" },
-    { name = "packaging" },
-    { name = "psutil" },
-    { name = "py-cpuinfo" },
-    { name = "pydantic" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "tqdm" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/2e/06/7315113506f1804b8ba4f77cb31905c62f7080452a0af2d13eaadaa83a08/deepspeed-0.14.4.tar.gz", hash = "sha256:bb2f404b4a1d06aedd40c64d661f71307c22945d04a42d397ad39bbfeef9c8b8", size = 1340883, upload-time = "2024-06-21T17:34:35.846Z" }
 
 [[package]]
 name = "defusedxml"
@@ -2072,15 +1946,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/95/af/2a2f83f981e969ae3ec5dc30f9b0cd1a258acabc2ff7b33eb9726e334e55/einx-0.3.0.tar.gz", hash = "sha256:17ff87c6a0f68ab358c1da489f00e95f1de106fd12ff17d0fb3e210aaa1e5f8c", size = 84758, upload-time = "2024-06-11T13:49:37.532Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/90/04/4a730d74fd908daad86d6b313f235cdf8e0cf1c255b392b7174ff63ea81a/einx-0.3.0-py3-none-any.whl", hash = "sha256:367d62bab8dbb8c4937308512abb6f746cc0920990589892ba0d281356d39345", size = 102958, upload-time = "2024-06-11T13:49:36.441Z" },
-]
-
-[package.optional-dependencies]
-torch = [
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
 ]
 
 [[package]]
@@ -2260,20 +2125,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/11/07/a119a1aa04d37bc819940d95ed7e135a7dcca1c098123a3764a6dcace9e7/fire-0.4.0.tar.gz", hash = "sha256:c5e2b8763699d1142393a46d0e3e790c5eb2f0706082df8f647878842c216a62", size = 87684, upload-time = "2021-01-22T18:11:49.152Z" }
 
 [[package]]
-name = "flash-attn"
-version = "2.6.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "einops" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/cd/1e/21321670cd3c2f225026d9fd89272cae661529238850e79f48ccf2f9e4e3/flash_attn-2.6.3.tar.gz", hash = "sha256:5bfae9500ad8e7d2937ebccb4906f3bc464d1bf66eedd0e4adabd520811c7b52", size = 2631958, upload-time = "2024-07-25T23:45:52.283Z" }
-
-[[package]]
 name = "flask"
 version = "3.0.3"
 source = { registry = "https://pypi.org/simple" }
@@ -2440,8 +2291,8 @@ name = "gevent"
 version = "24.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cffi", marker = "(platform_python_implementation == 'CPython' and sys_platform == 'win32') or (platform_python_implementation != 'CPython' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'win32' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "greenlet", marker = "platform_python_implementation == 'CPython' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "cffi", marker = "platform_python_implementation == 'CPython' and sys_platform == 'win32'" },
+    { name = "greenlet", marker = "platform_python_implementation == 'CPython'" },
     { name = "zope-event" },
     { name = "zope-interface" },
 ]
@@ -2515,7 +2366,7 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiofiles" },
     { name = "anyio" },
-    { name = "audioop-lts", marker = "python_full_version >= '3.13' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "audioop-lts", marker = "python_full_version >= '3.13'" },
     { name = "fastapi" },
     { name = "ffmpy" },
     { name = "gradio-client" },
@@ -2532,15 +2383,15 @@ dependencies = [
     { name = "pydub" },
     { name = "python-multipart" },
     { name = "pyyaml" },
-    { name = "ruff", marker = "sys_platform != 'emscripten' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "ruff", marker = "sys_platform != 'emscripten'" },
     { name = "safehttpx" },
     { name = "semantic-version" },
-    { name = "starlette", marker = "sys_platform != 'emscripten' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "starlette", marker = "sys_platform != 'emscripten'" },
     { name = "tomlkit" },
-    { name = "typer", marker = "sys_platform != 'emscripten' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "typer", marker = "sys_platform != 'emscripten'" },
     { name = "typing-extensions" },
-    { name = "urllib3", marker = "sys_platform == 'emscripten' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "uvicorn", marker = "sys_platform != 'emscripten' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "urllib3", marker = "sys_platform == 'emscripten'" },
+    { name = "uvicorn", marker = "sys_platform != 'emscripten'" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/83/f5/3d7dc4b1837994606ce7de560e898ccf423dd25e84b673eebfac6c7a352a/gradio-5.11.0-py3-none-any.whl", hash = "sha256:0b8fdb90ceaad2bb8bb7aecb3ad5b05d3020945eb6162fb779c6c09525f94082", size = 57547766, upload-time = "2025-01-08T21:04:27.46Z" },
@@ -2782,7 +2633,7 @@ name = "humanfriendly"
 version = "10.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pyreadline3", marker = "sys_platform == 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "pyreadline3", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/cc/3f/2c29224acb2e2df4d2046e4c73ee2662023c58ff5b113c4c1adac0886c43/humanfriendly-10.0.tar.gz", hash = "sha256:6b0b831ce8f15f7300721aa49829fc4e83921a9a301cc7f606be6686a2288ddc", size = 360702, upload-time = "2021-09-17T21:40:43.31Z" }
 wheels = [
@@ -2970,7 +2821,7 @@ name = "ipykernel"
 version = "6.29.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "appnope", marker = "sys_platform == 'darwin' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "appnope", marker = "sys_platform == 'darwin'" },
     { name = "comm" },
     { name = "debugpy" },
     { name = "ipython" },
@@ -2994,13 +2845,13 @@ name = "ipython"
 version = "8.12.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "appnope", marker = "sys_platform == 'darwin' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "appnope", marker = "sys_platform == 'darwin'" },
     { name = "backcall" },
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
     { name = "decorator" },
     { name = "jedi" },
     { name = "matplotlib-inline" },
-    { name = "pexpect", marker = "sys_platform != 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "pexpect", marker = "sys_platform != 'win32'" },
     { name = "pickleshare" },
     { name = "prompt-toolkit" },
     { name = "pygments" },
@@ -3087,7 +2938,7 @@ name = "jinxed"
 version = "1.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "ansicon", marker = "sys_platform == 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "ansicon", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/20/d0/59b2b80e7a52d255f9e0ad040d2e826342d05580c4b1d7d7747cfb8db731/jinxed-1.3.0.tar.gz", hash = "sha256:1593124b18a41b7a3da3b078471442e51dbad3d77b4d4f2b0c26ab6f7d660dbf", size = 80981, upload-time = "2024-07-31T22:39:18.854Z" }
 wheels = [
@@ -3243,7 +3094,7 @@ version = "5.7.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "platformdirs" },
-    { name = "pywin32", marker = "(platform_python_implementation != 'PyPy' and sys_platform == 'win32') or (platform_python_implementation == 'PyPy' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'win32' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "pywin32", marker = "platform_python_implementation != 'PyPy' and sys_platform == 'win32'" },
     { name = "traitlets" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/00/11/b56381fa6c3f4cc5d2cf54a7dbf98ad9aa0b339ef7a601d6053538b079a7/jupyter_core-5.7.2.tar.gz", hash = "sha256:aa5f8d32bbf6b431ac830496da7392035d6f61b4f54872f15c4bd2a9c3f536d9", size = 87629, upload-time = "2024-03-12T12:37:35.652Z" }
@@ -3502,18 +3353,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/b6/17/71e9984cf0570cd202ac0a1c9ed5c1b8889b0fc8dc736f5ef0ffb181c284/lxml-5.3.0-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:df5c7333167b9674aa8ae1d4008fa4bc17a313cc490b2cca27838bbdcc6bb15b", size = 5011053, upload-time = "2024-08-10T18:12:59.714Z" },
     { url = "https://files.pythonhosted.org/packages/69/68/9f7e6d3312a91e30829368c2b3217e750adef12a6f8eb10498249f4e8d72/lxml-5.3.0-cp313-cp313-win32.whl", hash = "sha256:c802e1c2ed9f0c06a65bc4ed0189d000ada8049312cfeab6ca635e39c9608957", size = 3485634, upload-time = "2024-08-10T18:13:02.78Z" },
     { url = "https://files.pythonhosted.org/packages/7d/db/214290d58ad68c587bd5d6af3d34e56830438733d0d0856c0275fde43652/lxml-5.3.0-cp313-cp313-win_amd64.whl", hash = "sha256:406246b96d552e0503e17a1006fd27edac678b3fcc9f1be71a2f94b4ff61528d", size = 3814417, upload-time = "2024-08-10T18:13:05.791Z" },
-]
-
-[[package]]
-name = "mako"
-version = "1.3.10"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "markupsafe" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/9e/38/bd5b78a920a64d708fe6bc8e0a2c075e1389d53bef8413725c63ba041535/mako-1.3.10.tar.gz", hash = "sha256:99579a6f39583fa7e5630a28c3c1f440e4e97a414b80372649c0ce338da2ea28", size = 392474, upload-time = "2025-04-10T12:44:31.16Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/87/fb/99f81ac72ae23375f22b7afdb7642aba97c00a713c217124420147681a2f/mako-1.3.10-py3-none-any.whl", hash = "sha256:baef24a52fc4fc514a0887ac600f9f1cff3d82c61d4d700a1fa84d597b88db59", size = 78509, upload-time = "2025-04-10T12:50:53.297Z" },
 ]
 
 [[package]]
@@ -4080,118 +3919,34 @@ wheels = [
 
 [[package]]
 name = "nvidia-cublas-cu12"
-version = "12.1.3.1"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/37/6d/121efd7382d5b0284239f4ab1fc1590d86d34ed4a4a2fdb13b30ca8e5740/nvidia_cublas_cu12-12.1.3.1-py3-none-manylinux1_x86_64.whl", hash = "sha256:ee53ccca76a6fc08fb9701aa95b6ceb242cdaab118c3bb152af4e579af792728", size = 410594774, upload-time = "2023-04-19T15:50:03.519Z" },
-    { url = "https://files.pythonhosted.org/packages/c5/ef/32a375b74bea706c93deea5613552f7c9104f961b21df423f5887eca713b/nvidia_cublas_cu12-12.1.3.1-py3-none-win_amd64.whl", hash = "sha256:2b964d60e8cf11b5e1073d179d85fa340c120e99b3067558f3cf98dd69d02906", size = 439918445, upload-time = "2023-04-19T15:56:13.346Z" },
-]
-
-[[package]]
-name = "nvidia-cublas-cu12"
 version = "12.4.2.65"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/75/51/0729bf223f40b5ac1872b6522d2f0efe8b3859c8ae1790382511da9d5c22/nvidia_cublas_cu12-12.4.2.65-py3-none-manylinux2014_aarch64.whl", hash = "sha256:c2fb0afbe23722ede814f7affb8fa49ff81200467a4f9c770b963578e63494f7", size = 362879754, upload-time = "2024-03-12T22:16:52.151Z" },
     { url = "https://files.pythonhosted.org/packages/f2/44/fdfd1a9f54167714d2c3dbc1bb1cb030340d6fb936a1dab9ef60999e3f73/nvidia_cublas_cu12-12.4.2.65-py3-none-manylinux2014_x86_64.whl", hash = "sha256:14c9ae3f7711225a4f9f8f46481947a30329f92b7533ae90f8ff22c61ae54a87", size = 362995111, upload-time = "2024-03-06T01:14:34.803Z" },
-    { url = "https://files.pythonhosted.org/packages/4a/a9/6aeceadf197d949d872bc9f14e4513ab8b0241616b409719a9ab4f6a7ceb/nvidia_cublas_cu12-12.4.2.65-py3-none-win_amd64.whl", hash = "sha256:b61df23689c4d883a543f0b199e5f09260e5384cbd9bb1de6dbdbccc49c7daf1", size = 396452397, upload-time = "2024-03-06T01:21:11.996Z" },
-]
-
-[[package]]
-name = "nvidia-cuda-cupti-cu12"
-version = "12.1.105"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/7e/00/6b218edd739ecfc60524e585ba8e6b00554dd908de2c9c66c1af3e44e18d/nvidia_cuda_cupti_cu12-12.1.105-py3-none-manylinux1_x86_64.whl", hash = "sha256:e54fde3983165c624cb79254ae9818a456eb6e87a7fd4d56a2352c24ee542d7e", size = 14109015, upload-time = "2023-04-19T15:47:32.502Z" },
-    { url = "https://files.pythonhosted.org/packages/d0/56/0021e32ea2848c24242f6b56790bd0ccc8bf99f973ca790569c6ca028107/nvidia_cuda_cupti_cu12-12.1.105-py3-none-win_amd64.whl", hash = "sha256:bea8236d13a0ac7190bd2919c3e8e6ce1e402104276e6f9694479e48bb0eb2a4", size = 10154340, upload-time = "2023-04-19T15:53:33.563Z" },
 ]
 
 [[package]]
 name = "nvidia-cuda-cupti-cu12"
 version = "12.4.99"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/64/ef/66230d5f73e1f9c86e0803299b27bc5116d8755082dad46c96e0001858df/nvidia_cuda_cupti_cu12-12.4.99-py3-none-manylinux2014_aarch64.whl", hash = "sha256:54be2ebeea3bdde3f43d6f1ea38b7afa507c945d00aca54a5dbf4e483721129a", size = 12352870, upload-time = "2024-03-12T22:09:45.224Z" },
     { url = "https://files.pythonhosted.org/packages/8b/7e/edf06abca629c377700801a4e38778ebce3b5e91870f86715bc58e1e21df/nvidia_cuda_cupti_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl", hash = "sha256:f3bb2e216f9ca073d11c2e087f59676bd315d84f6fc27d01a8609f6ead957e18", size = 13805916, upload-time = "2024-03-06T01:12:14.374Z" },
-    { url = "https://files.pythonhosted.org/packages/20/6e/d9c3bc60d68d3802ffed148102e456dbb8eeea02f58926041a8a70d9fd23/nvidia_cuda_cupti_cu12-12.4.99-py3-none-win_amd64.whl", hash = "sha256:1232fec902583d18f59c997f08235973d4e54769ef6dc86b760936b4ecd27c1e", size = 9935925, upload-time = "2024-03-06T01:18:45.25Z" },
-]
-
-[[package]]
-name = "nvidia-cuda-nvrtc-cu12"
-version = "12.1.105"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/b6/9f/c64c03f49d6fbc56196664d05dba14e3a561038a81a638eeb47f4d4cfd48/nvidia_cuda_nvrtc_cu12-12.1.105-py3-none-manylinux1_x86_64.whl", hash = "sha256:339b385f50c309763ca65456ec75e17bbefcbbf2893f462cb8b90584cd27a1c2", size = 23671734, upload-time = "2023-04-19T15:48:32.42Z" },
-    { url = "https://files.pythonhosted.org/packages/ad/1d/f76987c4f454eb86e0b9a0e4f57c3bf1ac1d13ad13cd1a4da4eb0e0c0ce9/nvidia_cuda_nvrtc_cu12-12.1.105-py3-none-win_amd64.whl", hash = "sha256:0a98a522d9ff138b96c010a65e145dc1b4850e9ecb75a0172371793752fd46ed", size = 19331863, upload-time = "2023-04-19T15:54:34.603Z" },
 ]
 
 [[package]]
 name = "nvidia-cuda-nvrtc-cu12"
 version = "12.4.99"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6c/2a/878fd191bc39185c57eae258c96c4a97db11e1564957667d82a46b9cb24d/nvidia_cuda_nvrtc_cu12-12.4.99-py3-none-manylinux2014_aarch64.whl", hash = "sha256:1ba1f0bcb0de66cf441766c1099726f6ebeaab3afe5b180d186a37a4692e6381", size = 24161839, upload-time = "2024-03-12T22:15:11.751Z" },
     { url = "https://files.pythonhosted.org/packages/ef/2a/48c45a6db55883a426da394dd231a61acef06b171bfbeb27c3d524844a0e/nvidia_cuda_nvrtc_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl", hash = "sha256:0f488eb03e10bd1551bae75bdc1ca8771218889a0b9746a00c97e5a2ec8bbd3e", size = 24662768, upload-time = "2024-03-06T01:13:28.543Z" },
-    { url = "https://files.pythonhosted.org/packages/77/a2/9b6d13f198ca2895fed9c21bd93a3e764239664066e6c14fdb68345c0106/nvidia_cuda_nvrtc_cu12-12.4.99-py3-none-win_amd64.whl", hash = "sha256:0d4f0b6bd29176d11f3dcd68075e64082e5bb8af56314c5021a4ec57daf22cf4", size = 19778540, upload-time = "2024-03-06T01:19:41.368Z" },
-]
-
-[[package]]
-name = "nvidia-cuda-runtime-cu12"
-version = "12.1.105"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/eb/d5/c68b1d2cdfcc59e72e8a5949a37ddb22ae6cade80cd4a57a84d4c8b55472/nvidia_cuda_runtime_cu12-12.1.105-py3-none-manylinux1_x86_64.whl", hash = "sha256:6e258468ddf5796e25f1dc591a31029fa317d97a0a94ed93468fc86301d61e40", size = 823596, upload-time = "2023-04-19T15:47:22.471Z" },
-    { url = "https://files.pythonhosted.org/packages/9f/e2/7a2b4b5064af56ea8ea2d8b2776c0f2960d95c88716138806121ae52a9c9/nvidia_cuda_runtime_cu12-12.1.105-py3-none-win_amd64.whl", hash = "sha256:dfb46ef84d73fababab44cf03e3b83f80700d27ca300e537f85f636fac474344", size = 821226, upload-time = "2023-04-19T15:53:23.082Z" },
 ]
 
 [[package]]
 name = "nvidia-cuda-runtime-cu12"
 version = "12.4.99"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f7/a4/e9b4c5c627028036991334bdb589ba2f7646f999fdf9265f1a82655de11e/nvidia_cuda_runtime_cu12-12.4.99-py3-none-manylinux2014_aarch64.whl", hash = "sha256:3f1d26d67150444e86e96b86e541123cd015c6532a9346536dadc7f49463cc43", size = 893801, upload-time = "2024-03-12T22:09:24.628Z" },
     { url = "https://files.pythonhosted.org/packages/14/46/23a6a3b20bf2698232ac66c56d6e130efb4026dc69aa993c813ce4e05958/nvidia_cuda_runtime_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl", hash = "sha256:1454a7c101976d3a9ade86040d01c4e57e8f6396c35b13f7a42c787dab145bed", size = 883368, upload-time = "2024-03-06T01:11:52.747Z" },
-    { url = "https://files.pythonhosted.org/packages/14/11/9aa27d2fbd2ec888e317722af1cc52e2a1eb7ed6d63169cd1a28e17402b2/nvidia_cuda_runtime_cu12-12.4.99-py3-none-win_amd64.whl", hash = "sha256:eeac550001768f1ff2638348be330b2684ded4c376ef5425230bd1a972207b61", size = 878420, upload-time = "2024-03-06T01:18:24.542Z" },
 ]
 
 [[package]]
@@ -4199,144 +3954,50 @@ name = "nvidia-cudnn-cu12"
 version = "9.1.0.70"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-cublas-cu12", version = "12.1.3.1", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cublas-cu12", version = "12.4.2.65", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine == 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "nvidia-cublas-cu12", marker = "platform_machine != 'aarch64' and sys_platform == 'linux'" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/9f/fd/713452cd72343f682b1c7b9321e23829f00b842ceaedcda96e742ea0b0b3/nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl", hash = "sha256:165764f44ef8c61fcdfdfdbe769d687e06374059fbb388b6c89ecb0e28793a6f", size = 664752741, upload-time = "2024-04-22T15:24:15.253Z" },
-    { url = "https://files.pythonhosted.org/packages/3f/d0/f90ee6956a628f9f04bf467932c0a25e5a7e706a684b896593c06c82f460/nvidia_cudnn_cu12-9.1.0.70-py3-none-win_amd64.whl", hash = "sha256:6278562929433d68365a07a4a1546c237ba2849852c0d4b2262a486e805b977a", size = 679925892, upload-time = "2024-04-22T15:24:53.333Z" },
-]
-
-[[package]]
-name = "nvidia-cufft-cu12"
-version = "11.0.2.54"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/86/94/eb540db023ce1d162e7bea9f8f5aa781d57c65aed513c33ee9a5123ead4d/nvidia_cufft_cu12-11.0.2.54-py3-none-manylinux1_x86_64.whl", hash = "sha256:794e3948a1aa71fd817c3775866943936774d1c14e7628c74f6f7417224cdf56", size = 121635161, upload-time = "2023-04-19T15:50:46Z" },
-    { url = "https://files.pythonhosted.org/packages/f7/57/7927a3aa0e19927dfed30256d1c854caf991655d847a4e7c01fe87e3d4ac/nvidia_cufft_cu12-11.0.2.54-py3-none-win_amd64.whl", hash = "sha256:d9ac353f78ff89951da4af698f80870b1534ed69993f10a4cf1d96f21357e253", size = 121344196, upload-time = "2023-04-19T15:56:59.562Z" },
 ]
 
 [[package]]
 name = "nvidia-cufft-cu12"
 version = "11.2.0.44"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6b/9c/d454bdffce8ec807b88df0c36f6b94522c274bd8807677d8e50cdf95772b/nvidia_cufft_cu12-11.2.0.44-py3-none-manylinux2014_aarch64.whl", hash = "sha256:a19266cefd620e3c38419a80e923f5359b2c7ce459c0fd82a84d5c032d5751bd", size = 211421166, upload-time = "2024-03-12T22:17:32.633Z" },
     { url = "https://files.pythonhosted.org/packages/bb/98/46c58342ff1be6236948132aece48c866c933bda80a17b396665b80dee12/nvidia_cufft_cu12-11.2.0.44-py3-none-manylinux2014_x86_64.whl", hash = "sha256:daece17ff16751d7fa9fa1e60b80ec9a0425c3cb6b238107c7222114fab3e6f1", size = 211459111, upload-time = "2024-03-06T01:15:02.91Z" },
-    { url = "https://files.pythonhosted.org/packages/20/85/0c322a1cf962d4a00e6d5f9fc16fe5ac05eabd4a7a4762358e4a88155d36/nvidia_cufft_cu12-11.2.0.44-py3-none-win_amd64.whl", hash = "sha256:d7a1cc2954bc4dfb27f6779987bcab41a10da5760ef8cc229a5d5eef9b68b143", size = 210576597, upload-time = "2024-03-06T01:21:39.16Z" },
-]
-
-[[package]]
-name = "nvidia-curand-cu12"
-version = "10.3.2.106"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/44/31/4890b1c9abc496303412947fc7dcea3d14861720642b49e8ceed89636705/nvidia_curand_cu12-10.3.2.106-py3-none-manylinux1_x86_64.whl", hash = "sha256:9d264c5036dde4e64f1de8c50ae753237c12e0b1348738169cd0f8a536c0e1e0", size = 56467784, upload-time = "2023-04-19T15:51:04.804Z" },
-    { url = "https://files.pythonhosted.org/packages/5c/97/4c9c7c79efcdf5b70374241d48cf03b94ef6707fd18ea0c0f53684931d0b/nvidia_curand_cu12-10.3.2.106-py3-none-win_amd64.whl", hash = "sha256:75b6b0c574c0037839121317e17fd01f8a69fd2ef8e25853d826fec30bdba74a", size = 55995813, upload-time = "2023-04-19T15:57:16.676Z" },
 ]
 
 [[package]]
 name = "nvidia-curand-cu12"
 version = "10.3.5.119"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d5/93/5479462a873ea68cb13508732685eed89cf0e631212151d79f54e9eb5788/nvidia_curand_cu12-10.3.5.119-py3-none-manylinux2014_aarch64.whl", hash = "sha256:60abf98149b69ec106d8f23cbde186e9a6e8ce5837558477023c870c63ff3e85", size = 56314810, upload-time = "2024-03-12T22:18:08.828Z" },
     { url = "https://files.pythonhosted.org/packages/33/bf/b2acee43275181f25f6d58f09a1ecd1937fb44539093714daf0ef50d8efe/nvidia_curand_cu12-10.3.5.119-py3-none-manylinux2014_x86_64.whl", hash = "sha256:9e7ad2425cb1a787a595c6ad23cb9437bf8cff99b6570b7c16d42c61ba427504", size = 56305206, upload-time = "2024-03-06T01:15:32.198Z" },
-    { url = "https://files.pythonhosted.org/packages/67/90/30f11d4f8d507ec58482f905857d1b46f9aa6bf828e77d55d0a72b10d68a/nvidia_curand_cu12-10.3.5.119-py3-none-win_amd64.whl", hash = "sha256:bb3827cee9aa5d0a2d1c5e15af6003ec9d8374e7a3389a9efd4b116401330fde", size = 55799920, upload-time = "2024-03-06T01:22:06.511Z" },
-]
-
-[[package]]
-name = "nvidia-cusolver-cu12"
-version = "11.4.5.107"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
-dependencies = [
-    { name = "nvidia-cublas-cu12", version = "12.1.3.1", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cusparse-cu12", version = "12.1.0.106", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/bc/1d/8de1e5c67099015c834315e333911273a8c6aaba78923dd1d1e25fc5f217/nvidia_cusolver_cu12-11.4.5.107-py3-none-manylinux1_x86_64.whl", hash = "sha256:8a7ec542f0412294b15072fa7dab71d31334014a69f953004ea7a118206fe0dd", size = 124161928, upload-time = "2023-04-19T15:51:25.781Z" },
-    { url = "https://files.pythonhosted.org/packages/b8/80/8fca0bf819122a631c3976b6fc517c1b10741b643b94046bd8dd451522c5/nvidia_cusolver_cu12-11.4.5.107-py3-none-win_amd64.whl", hash = "sha256:74e0c3a24c78612192a74fcd90dd117f1cf21dea4822e66d89e8ea80e3cd2da5", size = 121643081, upload-time = "2023-04-19T15:57:43.035Z" },
 ]
 
 [[package]]
 name = "nvidia-cusolver-cu12"
 version = "11.6.0.99"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
 dependencies = [
-    { name = "nvidia-cublas-cu12", version = "12.4.2.65", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine == 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cusparse-cu12", version = "12.3.0.142", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine == 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine == 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "nvidia-cublas-cu12", marker = "platform_machine != 'aarch64' and sys_platform == 'linux'" },
+    { name = "nvidia-cusparse-cu12", marker = "platform_machine != 'aarch64' and sys_platform == 'linux'" },
+    { name = "nvidia-nvjitlink-cu12", marker = "platform_machine != 'aarch64' and sys_platform == 'linux'" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7a/aa/e79f86ba4be5492c043d674c59d81e9169f0b1dce92da19d23ca52f9fa70/nvidia_cusolver_cu12-11.6.0.99-py3-none-manylinux2014_aarch64.whl", hash = "sha256:23960b6059207fcba310b4f921595f7c4a05ee765c3ad10559f2d4e824263eab", size = 128061334, upload-time = "2024-03-12T22:18:26.812Z" },
     { url = "https://files.pythonhosted.org/packages/b3/6f/692057afbe7cf0a17b7bf26065b833d45a0a1b2eaa51b43deb07295b8a83/nvidia_cusolver_cu12-11.6.0.99-py3-none-manylinux2014_x86_64.whl", hash = "sha256:30693d3865ae3f5a6aacf46e42549fb2d1fbb15b0189bc14fc0b2894e173769f", size = 128402308, upload-time = "2024-03-06T01:15:51.544Z" },
-    { url = "https://files.pythonhosted.org/packages/d5/47/11a2dcefb78722ede52815934e995fb728672f392be4617275845abb726e/nvidia_cusolver_cu12-11.6.0.99-py3-none-win_amd64.whl", hash = "sha256:53a06bf0579f94e49c57ac99b388b8ff929a8a304c41df35261bd30b196cb958", size = 125727520, upload-time = "2024-03-06T01:22:26.372Z" },
-]
-
-[[package]]
-name = "nvidia-cusparse-cu12"
-version = "12.1.0.106"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
-dependencies = [
-    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/65/5b/cfaeebf25cd9fdec14338ccb16f6b2c4c7fa9163aefcf057d86b9cc248bb/nvidia_cusparse_cu12-12.1.0.106-py3-none-manylinux1_x86_64.whl", hash = "sha256:f3b50f42cf363f86ab21f720998517a659a48131e8d538dc02f8768237bd884c", size = 195958278, upload-time = "2023-04-19T15:51:49.939Z" },
-    { url = "https://files.pythonhosted.org/packages/0f/95/48fdbba24c93614d1ecd35bc6bdc6087bd17cbacc3abc4b05a9c2a1ca232/nvidia_cusparse_cu12-12.1.0.106-py3-none-win_amd64.whl", hash = "sha256:b798237e81b9719373e8fae8d4f091b70a0cf09d9d85c95a557e11df2d8e9a5a", size = 195414588, upload-time = "2023-04-19T15:58:08.389Z" },
 ]
 
 [[package]]
 name = "nvidia-cusparse-cu12"
 version = "12.3.0.142"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
 dependencies = [
-    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine == 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "nvidia-nvjitlink-cu12", marker = "platform_machine != 'aarch64' and sys_platform == 'linux'" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b6/dd/3f77235e51d7263cdc3f4f278f0e183e1ebe27ee649f7bfdadae6d5aafb2/nvidia_cusparse_cu12-12.3.0.142-py3-none-manylinux2014_aarch64.whl", hash = "sha256:37380e2592751cf73c81141933651a5e2bdcc9b1727bee1489c3987ad9023873", size = 207381615, upload-time = "2024-03-12T22:19:06.809Z" },
     { url = "https://files.pythonhosted.org/packages/1f/89/f7a823867068550f8908c469a66bb2dc8ea60ddcdc7f45b99a919a7a836e/nvidia_cusparse_cu12-12.3.0.142-py3-none-manylinux2014_x86_64.whl", hash = "sha256:364106d1d9825901dc70fb7d19ef6fdd0f534627b824abfea494abe319c1402a", size = 207454570, upload-time = "2024-03-06T01:16:17.757Z" },
-    { url = "https://files.pythonhosted.org/packages/42/31/e7a4e916bd13cad79f6cf3819ab3f5456b743534c656a74106b46d4d0c34/nvidia_cusparse_cu12-12.3.0.142-py3-none-win_amd64.whl", hash = "sha256:863f4af9e2a2241829e5b90de18ad2c9db38ccc94153303e56d0791c4239a165", size = 204686301, upload-time = "2024-03-06T01:22:51.976Z" },
 ]
 
 [[package]]
@@ -4353,7 +4014,6 @@ name = "nvidia-nccl-cu12"
 version = "2.20.5"
 source = { registry = "https://pypi.org/simple" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c1/bb/d09dda47c881f9ff504afd6f9ca4f502ded6d8fc2f572cacc5e39da91c28/nvidia_nccl_cu12-2.20.5-py3-none-manylinux2014_aarch64.whl", hash = "sha256:1fc150d5c3250b170b29410ba682384b14581db722b2531b0d8d33c595f33d01", size = 176238458, upload-time = "2024-04-02T15:58:42.448Z" },
     { url = "https://files.pythonhosted.org/packages/4b/2a/0a131f572aa09f741c30ccd45a8e56316e8be8dfc7bc19bf0ab7cfef7b19/nvidia_nccl_cu12-2.20.5-py3-none-manylinux2014_x86_64.whl", hash = "sha256:057f6bf9685f75215d0c53bf3ac4a10b3e6578351de307abad9e18a99182af56", size = 176249402, upload-time = "2024-03-06T04:30:20.663Z" },
 ]
 
@@ -4362,38 +4022,15 @@ name = "nvidia-nvjitlink-cu12"
 version = "12.4.99"
 source = { registry = "https://pypi.org/simple" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d3/a0/f4812f570ce4a83a60663a53e489de2c3f73fb96154fe1baa0965fdd87fc/nvidia_nvjitlink_cu12-12.4.99-py3-none-manylinux2014_aarch64.whl", hash = "sha256:75d6498c96d9adb9435f2bbdbddb479805ddfb97b5c1b32395c694185c20ca57", size = 20549110, upload-time = "2024-03-12T22:20:17.955Z" },
     { url = "https://files.pythonhosted.org/packages/58/d1/d1c80553f9d5d07b6072bc132607d75a0ef3600e28e1890e11c0f55d7346/nvidia_nvjitlink_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl", hash = "sha256:c6428836d20fe7e327191c175791d38570e10762edc588fb46749217cd444c74", size = 21062671, upload-time = "2024-03-06T01:17:26.391Z" },
-    { url = "https://files.pythonhosted.org/packages/c8/97/6e48475eed6f7bee9f0567bd958dd843ff2f9519ab091e82409e593d8fc2/nvidia_nvjitlink_cu12-12.4.99-py3-none-win_amd64.whl", hash = "sha256:991905ffa2144cb603d8ca7962d75c35334ae82bf92820b6ba78157277da1ad2", size = 95343486, upload-time = "2024-03-06T01:24:06.114Z" },
-]
-
-[[package]]
-name = "nvidia-nvtx-cu12"
-version = "12.1.105"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/da/d3/8057f0587683ed2fcd4dbfbdfdfa807b9160b809976099d36b8f60d08f03/nvidia_nvtx_cu12-12.1.105-py3-none-manylinux1_x86_64.whl", hash = "sha256:dc21cf308ca5691e7c04d962e213f8a4aa9bbfa23d95412f452254c2caeb09e5", size = 99138, upload-time = "2023-04-19T15:48:43.556Z" },
-    { url = "https://files.pythonhosted.org/packages/b8/d7/bd7cb2d95ac6ac6e8d05bfa96cdce69619f1ef2808e072919044c2d47a8c/nvidia_nvtx_cu12-12.1.105-py3-none-win_amd64.whl", hash = "sha256:65f4d98982b31b60026e0e6de73fbdfc09d08a96f4656dd3665ca616a11e1e82", size = 66307, upload-time = "2023-04-19T15:54:45.736Z" },
 ]
 
 [[package]]
 name = "nvidia-nvtx-cu12"
 version = "12.4.99"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/bc/85/51f59419c83b3c64e3a41614172f02d0a075691336c27997772cf7667165/nvidia_nvtx_cu12-12.4.99-py3-none-manylinux2014_aarch64.whl", hash = "sha256:d17886abffab395b92e20312fb5cfb8fa32181c8494de14df67d34ad61f404b0", size = 100401, upload-time = "2024-03-12T22:15:53.794Z" },
     { url = "https://files.pythonhosted.org/packages/d1/e8/d36836b500fa8693500228843317f28373209e9db873c76bc19af6ace63a/nvidia_nvtx_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl", hash = "sha256:d2a2d331e0c233b53f72c6940814d492177a3c17d268bde278cf41bdda95b054", size = 99126, upload-time = "2024-03-06T01:13:40.144Z" },
-    { url = "https://files.pythonhosted.org/packages/09/61/834f694eb4ba4ff5d30a0e512ca62638aacae37746729179fa086df8a3f0/nvidia_nvtx_cu12-12.4.99-py3-none-win_amd64.whl", hash = "sha256:b9cb750590c542283badf6b421f2dca82c113770e46786f74c8f91bd8b44b103", size = 66297, upload-time = "2024-03-06T01:20:01.127Z" },
 ]
 
 [[package]]
@@ -4792,7 +4429,7 @@ name = "portalocker"
 version = "2.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pywin32", marker = "sys_platform == 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "pywin32", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/df/48/62cf97ff7d2233e7db29dfb83f1584e26289e88af8af39de1a76629ac487/portalocker-2.0.0.tar.gz", hash = "sha256:14487eed81aa914127edf0284e29c7ca8842c05bb33d96dc7e4bdb47282d26e4", size = 15204, upload-time = "2020-08-02T00:33:36.351Z" }
 wheels = [
@@ -4945,11 +4582,11 @@ name = "py7zr"
 version = "0.22.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "brotli", marker = "platform_python_implementation == 'CPython' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "brotlicffi", marker = "platform_python_implementation == 'PyPy' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "brotli", marker = "platform_python_implementation == 'CPython'" },
+    { name = "brotlicffi", marker = "platform_python_implementation == 'PyPy'" },
     { name = "inflate64" },
     { name = "multivolumefile" },
-    { name = "psutil", marker = "sys_platform != 'cygwin' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "psutil", marker = "sys_platform != 'cygwin'" },
     { name = "pybcj" },
     { name = "pycryptodomex" },
     { name = "pyppmd" },
@@ -5475,7 +5112,7 @@ name = "pyzmq"
 version = "26.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cffi", marker = "implementation_name == 'pypy' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "cffi", marker = "implementation_name == 'pypy'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/fd/05/bed626b9f7bb2322cdbbf7b4bd8f54b1b617b0d2ab2d3547d6e39428a48e/pyzmq-26.2.0.tar.gz", hash = "sha256:070672c258581c8e4f640b5159297580a9974b026043bd4ab0470be9ed324f1f", size = 271975, upload-time = "2024-08-22T09:02:03.351Z" }
 wheels = [
@@ -5746,7 +5383,7 @@ name = "ruamel-yaml"
 version = "0.18.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "ruamel-yaml-clib", marker = "(python_full_version < '3.13' and platform_python_implementation == 'CPython') or (python_full_version >= '3.13' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_python_implementation != 'CPython' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "ruamel-yaml-clib", marker = "python_full_version < '3.13' and platform_python_implementation == 'CPython'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/29/81/4dfc17eb6ebb1aac314a3eb863c1325b907863a1b8b1382cdffcb6ac0ed9/ruamel.yaml-0.18.6.tar.gz", hash = "sha256:8b27e6a217e786c6fbe5634d8f3f11bc63e0f80f6a5890f28863d9c45aac311b", size = 143362, upload-time = "2024-02-07T06:47:20.283Z" }
 wheels = [
@@ -6053,11 +5690,11 @@ wheels = [
 
 [[package]]
 name = "setuptools"
-version = "80.7.1"
+version = "80.8.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/9e/8b/dc1773e8e5d07fd27c1632c45c1de856ac3dbf09c0147f782ca6d990cf15/setuptools-80.7.1.tar.gz", hash = "sha256:f6ffc5f0142b1bd8d0ca94ee91b30c0ca862ffd50826da1ea85258a06fd94552", size = 1319188, upload-time = "2025-05-15T02:41:00.955Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/8d/d2/ec1acaaff45caed5c2dedb33b67055ba9d4e96b091094df90762e60135fe/setuptools-80.8.0.tar.gz", hash = "sha256:49f7af965996f26d43c8ae34539c8d99c5042fbff34302ea151eaa9c207cd257", size = 1319720, upload-time = "2025-05-20T14:02:53.503Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a1/18/0e835c3a557dc5faffc8f91092f62fc337c1dab1066715842e7a4b318ec4/setuptools-80.7.1-py3-none-any.whl", hash = "sha256:ca5cc1069b85dc23070a6628e6bcecb3292acac802399c7f8edc0100619f9009", size = 1200776, upload-time = "2025-05-15T02:40:58.887Z" },
+    { url = "https://files.pythonhosted.org/packages/58/29/93c53c098d301132196c3238c312825324740851d77a8500a2462c0fd888/setuptools-80.8.0-py3-none-any.whl", hash = "sha256:95a60484590d24103af13b686121328cc2736bee85de8936383111e421b9edc0", size = 1201470, upload-time = "2025-05-20T14:02:51.348Z" },
 ]
 
 [[package]]
@@ -6178,40 +5815,12 @@ wheels = [
 ]
 
 [[package]]
-name = "speechbrain"
-version = "1.0.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "huggingface-hub" },
-    { name = "hyperpyyaml" },
-    { name = "joblib" },
-    { name = "numpy" },
-    { name = "packaging" },
-    { name = "scipy" },
-    { name = "sentencepiece" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torchaudio", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "extra == 'extra-17-baichuan-omni-1-5-cu124'" },
-    { name = "tqdm" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/ab/10/87e666544a4e0cec7cbdc09f26948994831ae0f8bbc58de3bf53b68285ff/speechbrain-1.0.3.tar.gz", hash = "sha256:fcab3c6e90012cecb1eed40ea235733b550137e73da6bfa2340ba191ec714052", size = 747735, upload-time = "2025-04-07T17:17:06.749Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/58/13/e61f1085aebee17d5fc2df19fcc5177c10379be52578afbecdd615a831c9/speechbrain-1.0.3-py3-none-any.whl", hash = "sha256:9859d4c1b1fb3af3b85523c0c89f52e45a04f305622ed55f31aa32dd2fba19e9", size = 864091, upload-time = "2025-04-07T17:17:04.706Z" },
-]
-
-[[package]]
 name = "speechrecognition"
 version = "3.14.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "audioop-lts", marker = "python_full_version >= '3.13' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "standard-aifc", marker = "python_full_version >= '3.13' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "audioop-lts", marker = "python_full_version >= '3.13'" },
+    { name = "standard-aifc", marker = "python_full_version >= '3.13'" },
     { name = "typing-extensions" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a9/7b/51d8b756aa1066b3f95bcbe3795f382f630ca9d2559ed808dada022141bf/speechrecognition-3.14.3.tar.gz", hash = "sha256:bdd2000a9897832b33095e33adfa48580787255706092e1346d1c6c36adae0a4", size = 32858109, upload-time = "2025-05-12T23:42:29.671Z" }
@@ -6244,27 +5853,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d3/91/bb331f0a43e04d950a710f402a0986a54147a35818df0e1658551c8d12e1/spinners-0.0.24.tar.gz", hash = "sha256:1eb6aeb4781d72ab42ed8a01dcf20f3002bf50740d7154d12fb8c9769bf9e27f", size = 5308, upload-time = "2020-02-19T21:42:32.326Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/9f/8e/3310207a68118000ca27ac878b8386123628b335ecb3d4bec4743357f0d1/spinners-0.0.24-py3-none-any.whl", hash = "sha256:2fa30d0b72c9650ad12bbe031c9943b8d441e41b4f5602b0ec977a19f3290e98", size = 5499, upload-time = "2020-02-19T21:42:30.876Z" },
-]
-
-[[package]]
-name = "sqlalchemy"
-version = "1.4.54"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "greenlet", marker = "platform_machine == 'AMD64' or platform_machine == 'WIN32' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'ppc64le' or platform_machine == 'win32' or platform_machine == 'x86_64' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/ce/af/20290b55d469e873cba9d41c0206ab5461ff49d759989b3fe65010f9d265/sqlalchemy-1.4.54.tar.gz", hash = "sha256:4470fbed088c35dc20b78a39aaf4ae54fe81790c783b3264872a0224f437c31a", size = 8470350, upload-time = "2024-09-05T15:54:10.398Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/da/49/fb98983b5568e93696a25fd5bec1b789095b79a72d5f57c6effddaa81d0a/SQLAlchemy-1.4.54-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:b05e0626ec1c391432eabb47a8abd3bf199fb74bfde7cc44a26d2b1b352c2c6e", size = 1589301, upload-time = "2024-09-05T19:22:42.197Z" },
-    { url = "https://files.pythonhosted.org/packages/03/98/5a81430bbd646991346cb088a2bdc84d1bcd3dbe6b0cfc1aaa898370e5c7/SQLAlchemy-1.4.54-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:13e91d6892b5fcb94a36ba061fb7a1f03d0185ed9d8a77c84ba389e5bb05e936", size = 1629553, upload-time = "2024-09-05T17:49:18.846Z" },
-    { url = "https://files.pythonhosted.org/packages/f1/17/14e35db2b0d6deaa27691d014addbb0dd6f7e044f7ee465446a3c0c71404/SQLAlchemy-1.4.54-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:fb59a11689ff3c58e7652260127f9e34f7f45478a2f3ef831ab6db7bcd72108f", size = 1627640, upload-time = "2024-09-05T17:48:01.558Z" },
-    { url = "https://files.pythonhosted.org/packages/98/62/335006a8f2c98f704f391e1a0cc01446d1b1b9c198f579f03599f55bd860/SQLAlchemy-1.4.54-cp311-cp311-win32.whl", hash = "sha256:1390ca2d301a2708fd4425c6d75528d22f26b8f5cbc9faba1ddca136671432bc", size = 1591723, upload-time = "2024-09-05T17:53:17.486Z" },
-    { url = "https://files.pythonhosted.org/packages/e2/a1/6b4b8c07082920f5445ec65c221fa33baab102aced5dcc2d87a15d3f8db4/SQLAlchemy-1.4.54-cp311-cp311-win_amd64.whl", hash = "sha256:2b37931eac4b837c45e2522066bda221ac6d80e78922fb77c75eb12e4dbcdee5", size = 1593511, upload-time = "2024-09-05T17:51:50.947Z" },
-    { url = "https://files.pythonhosted.org/packages/a5/1b/aa9b99be95d1615f058b5827447c18505b7b3f1dfcbd6ce1b331c2107152/SQLAlchemy-1.4.54-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:3f01c2629a7d6b30d8afe0326b8c649b74825a0e1ebdcb01e8ffd1c920deb07d", size = 1589983, upload-time = "2024-09-05T17:39:02.132Z" },
-    { url = "https://files.pythonhosted.org/packages/59/47/cb0fc64e5344f0a3d02216796c342525ab283f8f052d1c31a1d487d08aa0/SQLAlchemy-1.4.54-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:9c24dd161c06992ed16c5e528a75878edbaeced5660c3db88c820f1f0d3fe1f4", size = 1630158, upload-time = "2024-09-05T17:50:13.255Z" },
-    { url = "https://files.pythonhosted.org/packages/c0/8b/f45dd378f6c97e8ff9332ff3d03ecb0b8c491be5bb7a698783b5a2f358ec/SQLAlchemy-1.4.54-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b5e0d47d619c739bdc636bbe007da4519fc953393304a5943e0b5aec96c9877c", size = 1629232, upload-time = "2024-09-05T17:48:15.514Z" },
-    { url = "https://files.pythonhosted.org/packages/0d/3c/884fe389f5bec86a310b81e79abaa1e26e5d78dc10a84d544a6822833e47/SQLAlchemy-1.4.54-cp312-cp312-win32.whl", hash = "sha256:12bc0141b245918b80d9d17eca94663dbd3f5266ac77a0be60750f36102bbb0f", size = 1592027, upload-time = "2024-09-05T17:54:02.253Z" },
-    { url = "https://files.pythonhosted.org/packages/01/c3/c690d037be57efd3a69cde16a2ef1bd2a905dafe869434d33836de0983d0/SQLAlchemy-1.4.54-cp312-cp312-win_amd64.whl", hash = "sha256:f941aaf15f47f316123e1933f9ea91a6efda73a161a6ab6046d1cde37be62c88", size = 1593827, upload-time = "2024-09-05T17:52:07.454Z" },
 ]
 
 [[package]]
@@ -6340,8 +5928,8 @@ name = "standard-aifc"
 version = "3.13.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "audioop-lts", marker = "python_full_version >= '3.13' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "standard-chunk", marker = "python_full_version >= '3.13' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "audioop-lts", marker = "python_full_version >= '3.13'" },
+    { name = "standard-chunk", marker = "python_full_version >= '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/c4/53/6050dc3dde1671eb3db592c13b55a8005e5040131f7509cef0215212cb84/standard_aifc-3.13.0.tar.gz", hash = "sha256:64e249c7cb4b3daf2fdba4e95721f811bde8bdfc43ad9f936589b7bb2fae2e43", size = 15240, upload-time = "2024-10-30T16:01:31.772Z" }
 wheels = [
@@ -6406,7 +5994,7 @@ dependencies = [
     { name = "toml" },
     { name = "tornado" },
     { name = "typing-extensions" },
-    { name = "watchdog", marker = "sys_platform != 'darwin' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "watchdog", marker = "sys_platform != 'darwin'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d5/21/3740871ad79ee35f442f11bafec5010a3ec1916c7c9eb43ef866da641f31/streamlit-1.39.0.tar.gz", hash = "sha256:fef9de7983c4ee65c08e85607d7ffccb56b00482b1041fa62f90e4815d39df3a", size = 8360694, upload-time = "2024-10-01T17:36:42.057Z" }
 wheels = [
@@ -6717,33 +6305,6 @@ wheels = [
 [[package]]
 name = "torch"
 version = "2.4.1"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
-resolution-markers = [
-    "python_full_version >= '3.13' and sys_platform == 'darwin'",
-    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-]
-dependencies = [
-    { name = "filelock", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "fsspec", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "jinja2", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "networkx", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "sympy", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "typing-extensions", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torch-2.4.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:30be2844d0c939161a11073bfbaf645f1c7cb43f62f46cc6e4df1c119fb2a798" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-2.4.1-cp311-none-macosx_11_0_arm64.whl", hash = "sha256:ddddbd8b066e743934a4200b3d54267a46db02106876d21cf31f7da7a96f98ea" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-2.4.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:36109432b10bd7163c9b30ce896f3c2cca1b86b9765f956a1594f0ff43091e2a" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-2.4.1-cp312-none-macosx_11_0_arm64.whl", hash = "sha256:72b484d5b6cec1a735bf3fa5a1c4883d01748698c5e9cfdbeb4ffab7c7987e0d" },
-]
-
-[[package]]
-name = "torch"
-version = "2.4.1"
 source = { registry = "https://download.pytorch.org/whl/cu124" }
 resolution-markers = [
     "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
@@ -6751,91 +6312,16 @@ resolution-markers = [
     "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
 ]
 dependencies = [
-    { name = "filelock", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "fsspec", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "jinja2", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "networkx", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "sympy", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "typing-extensions", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "filelock", marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
+    { name = "fsspec", marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
+    { name = "jinja2", marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
+    { name = "networkx", marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
+    { name = "sympy", marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
+    { name = "typing-extensions", marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
 ]
 wheels = [
     { url = "https://download.pytorch.org/whl/cu124/torch-2.4.1-cp311-cp311-linux_aarch64.whl", hash = "sha256:2a2eaded7637aae3e4ed783a1539ecb06edf4a9ea9465628b5bd2c68b3b5e9da" },
     { url = "https://download.pytorch.org/whl/cu124/torch-2.4.1-cp312-cp312-linux_aarch64.whl", hash = "sha256:95596ba01b369898602f4fc0a885a874e2a45c99754a72ac6760d8aa3fe61ebc" },
-]
-
-[[package]]
-name = "torch"
-version = "2.4.1"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and sys_platform == 'darwin'",
-    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
-]
-dependencies = [
-    { name = "filelock", marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "fsspec", marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "jinja2", marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "networkx", marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cublas-cu12", version = "12.1.3.1", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cuda-cupti-cu12", version = "12.1.105", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cuda-nvrtc-cu12", version = "12.1.105", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cuda-runtime-cu12", version = "12.1.105", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cudnn-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cufft-cu12", version = "11.0.2.54", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-curand-cu12", version = "10.3.2.106", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cusolver-cu12", version = "11.4.5.107", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cusparse-cu12", version = "12.1.0.106", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-nvtx-cu12", version = "12.1.105", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "sympy", marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "typing-extensions", marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ea/ea/4ab009e953bca6ff35ad75b8ab58c0923308636c182c145dc63084f7d136/torch-2.4.1-cp311-cp311-manylinux1_x86_64.whl", hash = "sha256:0b5f88afdfa05a335d80351e3cea57d38e578c8689f751d35e0ff36bce872113", size = 797111232, upload-time = "2024-09-04T19:14:13.409Z" },
-    { url = "https://files.pythonhosted.org/packages/8f/a1/b31f94b4631c1731261db9fdc9a749ef58facc3b76094a6fe974f611f239/torch-2.4.1-cp311-cp311-manylinux2014_aarch64.whl", hash = "sha256:ef503165f2341942bfdf2bd520152f19540d0c0e34961232f134dc59ad435be8", size = 89719574, upload-time = "2024-09-04T19:13:24.64Z" },
-    { url = "https://files.pythonhosted.org/packages/5a/6a/775b93d6888c31f1f1fc457e4f5cc89f0984412d5dcdef792b8f2aa6e812/torch-2.4.1-cp311-cp311-win_amd64.whl", hash = "sha256:092e7c2280c860eff762ac08c4bdcd53d701677851670695e0c22d6d345b269c", size = 199436128, upload-time = "2024-09-04T19:12:01.97Z" },
-    { url = "https://files.pythonhosted.org/packages/1f/34/c93873c37f93154d982172755f7e504fdbae6c760499303a3111ce6ce327/torch-2.4.1-cp311-none-macosx_11_0_arm64.whl", hash = "sha256:ddddbd8b066e743934a4200b3d54267a46db02106876d21cf31f7da7a96f98ea", size = 62145176, upload-time = "2024-09-04T19:13:29.897Z" },
-    { url = "https://files.pythonhosted.org/packages/cc/df/5204a13a7a973c23c7ade615bafb1a3112b5d0ec258d8390f078fa4ab0f7/torch-2.4.1-cp312-cp312-manylinux1_x86_64.whl", hash = "sha256:fdc4fe11db3eb93c1115d3e973a27ac7c1a8318af8934ffa36b0370efe28e042", size = 797019590, upload-time = "2024-09-04T19:10:42.948Z" },
-    { url = "https://files.pythonhosted.org/packages/4f/16/d23a689e5ef8001ed2ace1a3a59f2fda842889b0c3f3877799089925282a/torch-2.4.1-cp312-cp312-manylinux2014_aarch64.whl", hash = "sha256:18835374f599207a9e82c262153c20ddf42ea49bc76b6eadad8e5f49729f6e4d", size = 89613802, upload-time = "2024-09-04T19:13:19.273Z" },
-    { url = "https://files.pythonhosted.org/packages/a8/e0/ca8354dfb8d834a76da51b06e8248b70fc182bc163540507919124974bdf/torch-2.4.1-cp312-cp312-win_amd64.whl", hash = "sha256:ebea70ff30544fc021d441ce6b219a88b67524f01170b1c538d7d3ebb5e7f56c", size = 199387694, upload-time = "2024-09-04T19:13:06.167Z" },
-    { url = "https://files.pythonhosted.org/packages/ac/30/8b6f77ea4ce84f015ee024b8dfef0dac289396254e8bfd493906d4cbb848/torch-2.4.1-cp312-none-macosx_11_0_arm64.whl", hash = "sha256:72b484d5b6cec1a735bf3fa5a1c4883d01748698c5e9cfdbeb4ffab7c7987e0d", size = 62123443, upload-time = "2024-09-04T19:12:59.242Z" },
-]
-
-[[package]]
-name = "torch"
-version = "2.4.1+cpu"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
-]
-dependencies = [
-    { name = "filelock", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "fsspec", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "jinja2", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "networkx", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "sympy", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "typing-extensions", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torch-2.4.1%2Bcpu-cp311-cp311-linux_x86_64.whl", hash = "sha256:2b03e20f37557d211d14e3fb3f71709325336402db132a1e0dd8b47392185baf" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-2.4.1%2Bcpu-cp311-cp311-win_amd64.whl", hash = "sha256:76a6fe7b10491b650c630bc9ae328df40f79a948296b41d3b087b29a8a63cbad" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-2.4.1%2Bcpu-cp312-cp312-linux_x86_64.whl", hash = "sha256:8800deef0026011d502c0c256cc4b67d002347f63c3a38cd8e45f1f445c61364" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-2.4.1%2Bcpu-cp312-cp312-win_amd64.whl", hash = "sha256:3a570e5c553415cdbddfe679207327b3a3806b21c6adea14fba77684d1619e97" },
 ]
 
 [[package]]
@@ -6854,25 +6340,25 @@ resolution-markers = [
     "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "filelock", marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "fsspec", marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "jinja2", marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "networkx", marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cublas-cu12", version = "12.4.2.65", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cuda-cupti-cu12", version = "12.4.99", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cuda-nvrtc-cu12", version = "12.4.99", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cuda-runtime-cu12", version = "12.4.99", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cudnn-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cufft-cu12", version = "11.2.0.44", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-curand-cu12", version = "10.3.5.119", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cusolver-cu12", version = "11.6.0.99", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-cusparse-cu12", version = "12.3.0.142", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "nvidia-nvtx-cu12", version = "12.4.99", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "sympy", marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "triton", marker = "(python_full_version < '3.13' and platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (python_full_version >= '3.13' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'x86_64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "typing-extensions", marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "filelock", marker = "platform_machine != 'aarch64' or sys_platform != 'linux'" },
+    { name = "fsspec", marker = "platform_machine != 'aarch64' or sys_platform != 'linux'" },
+    { name = "jinja2", marker = "platform_machine != 'aarch64' or sys_platform != 'linux'" },
+    { name = "networkx", marker = "platform_machine != 'aarch64' or sys_platform != 'linux'" },
+    { name = "nvidia-cublas-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-cuda-cupti-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-cuda-nvrtc-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-cuda-runtime-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-cudnn-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-cufft-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-curand-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-cusolver-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-cusparse-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-nccl-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-nvjitlink-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "nvidia-nvtx-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "sympy", marker = "platform_machine != 'aarch64' or sys_platform != 'linux'" },
+    { name = "triton", marker = "python_full_version < '3.13' and platform_machine == 'x86_64' and sys_platform == 'linux'" },
+    { name = "typing-extensions", marker = "platform_machine != 'aarch64' or sys_platform != 'linux'" },
 ]
 wheels = [
     { url = "https://download.pytorch.org/whl/cu124/torch-2.4.1%2Bcu124-cp311-cp311-linux_x86_64.whl", hash = "sha256:16e4ef3b32b45a278a0c512723f81cfa57035ebd5a75dbc2fb1360197ae06acd" },
@@ -6883,101 +6369,11 @@ wheels = [
 
 [[package]]
 name = "torchaudio"
-version = "2.4.1"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
-resolution-markers = [
-    "python_full_version >= '3.13' and sys_platform == 'darwin'",
-    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-]
-dependencies = [
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.4.1-cp311-cp311-linux_aarch64.whl", hash = "sha256:7640aaffb2056e12f2906187b03a22228a0908c87d0295fddf4b0b92334a290b" },
-    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.4.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:60af1531815d22659e5412ea401bed552a16c389938c49664e446e4cfd5ddc06" },
-    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.4.1-cp312-cp312-linux_aarch64.whl", hash = "sha256:5b62fc7b16ed708b0c07d4393137797e92f63fc3bd5705607d97ba6a9a7cf3f0" },
-    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.4.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:953946cf610ffd57bb3fdd228effa2112fa51c5dfe36a96611effc9074a3d3be" },
-]
-
-[[package]]
-name = "torchaudio"
-version = "2.4.1"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and sys_platform == 'darwin'",
-    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
-]
-dependencies = [
-    { name = "torch", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/bb/28/4fddff9db2d0c5fb1c764a56d69ebe42858c388d1c2a1224cc5f3309def4/torchaudio-2.4.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:60af1531815d22659e5412ea401bed552a16c389938c49664e446e4cfd5ddc06", size = 1797237, upload-time = "2024-09-04T19:16:01.215Z" },
-    { url = "https://files.pythonhosted.org/packages/cc/f3/a950329a25ee1af14c05065ce6c1751f031de9e6d5eebb0620ce3d0938ed/torchaudio-2.4.1-cp311-cp311-manylinux1_x86_64.whl", hash = "sha256:95a0968569f7f4455bfd242bfcd489ec47ad37d2ba0f3d9f738cd1128a5f775c", size = 3366698, upload-time = "2024-09-04T19:15:44.182Z" },
-    { url = "https://files.pythonhosted.org/packages/08/6b/1fc20455bd0c095eb11240c74d074bfd96048276826c0b25972f7bcdb5fa/torchaudio-2.4.1-cp311-cp311-manylinux2014_aarch64.whl", hash = "sha256:7640aaffb2056e12f2906187b03a22228a0908c87d0295fddf4b0b92334a290b", size = 1666074, upload-time = "2024-09-04T19:15:59.712Z" },
-    { url = "https://files.pythonhosted.org/packages/b7/ba/6dde28d32906dba5e9a1b240c9b328f564ce3ac020c0f159cc13c2d47d9d/torchaudio-2.4.1-cp311-cp311-win_amd64.whl", hash = "sha256:3c08b42a0c296c8eeee6c533bcae5cfbc0ceae86a34f24fe6bbbb5faa7a7bea1", size = 2418452, upload-time = "2024-09-04T19:15:47.503Z" },
-    { url = "https://files.pythonhosted.org/packages/f7/63/ca0921398395834db67c52e2a0d0a4edec8077875c8ef825cb1ef81b86f7/torchaudio-2.4.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:953946cf610ffd57bb3fdd228effa2112fa51c5dfe36a96611effc9074a3d3be", size = 1792504, upload-time = "2024-09-04T19:15:58.206Z" },
-    { url = "https://files.pythonhosted.org/packages/59/0c/2eaf389ebb377febaef128bce57e7ebdfb5375b959163dd936c06941fe59/torchaudio-2.4.1-cp312-cp312-manylinux1_x86_64.whl", hash = "sha256:1796a8961decb522c47daab0fbe27c057d6d143ee22bb6ae0d5eb9b2a038c7b6", size = 3361194, upload-time = "2024-09-04T19:15:55.448Z" },
-    { url = "https://files.pythonhosted.org/packages/7a/d0/4835f9f6d8ea26b633c6331aaff40d9ac52b26bd3e72d91d40f9c83ff5a1/torchaudio-2.4.1-cp312-cp312-manylinux2014_aarch64.whl", hash = "sha256:5b62fc7b16ed708b0c07d4393137797e92f63fc3bd5705607d97ba6a9a7cf3f0", size = 1659845, upload-time = "2024-09-04T19:15:52.122Z" },
-    { url = "https://files.pythonhosted.org/packages/9b/f5/d3c9b0ba802e2b8e363c5366b37b6b5fb703ac052a5afc334c36b255401f/torchaudio-2.4.1-cp312-cp312-win_amd64.whl", hash = "sha256:d721b186aae7bd8752c9ad95213f5d650926597bb9060728dfe476986a1ff570", size = 2412111, upload-time = "2024-09-04T19:15:36.232Z" },
-]
-
-[[package]]
-name = "torchaudio"
-version = "2.4.1+cpu"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
-]
-dependencies = [
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.4.1%2Bcpu-cp311-cp311-linux_x86_64.whl", hash = "sha256:c7c43a514fb62cf2e64d672c9de39ffbd886308da0085e4b8a171a659155abe2" },
-    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.4.1%2Bcpu-cp311-cp311-win_amd64.whl", hash = "sha256:6a9983de9cd1212668f0a25803b9aee124fd5aaf63c24dfce6b23008b0a8cebb" },
-    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.4.1%2Bcpu-cp312-cp312-linux_x86_64.whl", hash = "sha256:06f0e0b7df147f03ed43caf2ba349360f161e2f0bdad1d075020072bc8cfe50f" },
-    { url = "https://download.pytorch.org/whl/cpu/torchaudio-2.4.1%2Bcpu-cp312-cp312-win_amd64.whl", hash = "sha256:0aacd20af37433d3bcd655bf7a1f641dc9cb7711ff7e527225a4d3e7a4376896" },
-]
-
-[[package]]
-name = "torchaudio"
 version = "2.4.1+cu124"
 source = { registry = "https://download.pytorch.org/whl/cu124" }
-resolution-markers = [
-    "python_full_version >= '3.13' and sys_platform == 'darwin'",
-    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
-]
 dependencies = [
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
+    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "platform_machine != 'aarch64' or sys_platform != 'linux'" },
 ]
 wheels = [
     { url = "https://download.pytorch.org/whl/cu124/torchaudio-2.4.1%2Bcu124-cp311-cp311-linux_x86_64.whl", hash = "sha256:9045eeb86e8fc8767fb75224978051b114724d19af8f566c9dbd2c5c7d150f91" },
@@ -6988,109 +6384,13 @@ wheels = [
 
 [[package]]
 name = "torchvision"
-version = "0.19.1"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
-resolution-markers = [
-    "python_full_version >= '3.13' and sys_platform == 'darwin'",
-    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-]
-dependencies = [
-    { name = "numpy", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "pillow", marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.19.1-cp311-cp311-linux_aarch64.whl", hash = "sha256:d71a6a6fe3a5281ca3487d4c56ad4aad20ff70f82f1d7c79bcb6e7b0c2af00c8" },
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.19.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:40514282b4896d62765b8e26d7091c32e17c35817d00ec4be2362ea3ba3d1787" },
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.19.1-cp312-cp312-linux_aarch64.whl", hash = "sha256:c07bf43c2a145d792ecd9d0503d6c73577147ece508d45600d8aac77e4cdfcf9" },
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.19.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:27ece277ff0f6cdc7fed0627279c632dcb2e58187da771eca24b0fbcf3f8590d" },
-]
-
-[[package]]
-name = "torchvision"
-version = "0.19.1"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.13' and sys_platform == 'darwin'",
-    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
-]
-dependencies = [
-    { name = "numpy", marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "pillow", marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/66/f6/a2f07a3f5385b37c45b8e14448b8610a8618dfad18ea437cb23b4edc50c5/torchvision-0.19.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:40514282b4896d62765b8e26d7091c32e17c35817d00ec4be2362ea3ba3d1787", size = 1660235, upload-time = "2024-09-04T19:15:16.809Z" },
-    { url = "https://files.pythonhosted.org/packages/28/9d/40d1b943bbbd02a30d6b4f691d6de37a7e4c92f90bed0f8f47379e90eec6/torchvision-0.19.1-cp311-cp311-manylinux1_x86_64.whl", hash = "sha256:5a91be061ae5d6d5b95e833b93e57ca4d3c56c5a57444dd15da2e3e7fba96050", size = 7026152, upload-time = "2024-09-04T19:15:09.422Z" },
-    { url = "https://files.pythonhosted.org/packages/36/04/36e1d35b864f4a7c8f3056a427542b14b3bcdbc66edd36faadee109b86c5/torchvision-0.19.1-cp311-cp311-manylinux2014_aarch64.whl", hash = "sha256:d71a6a6fe3a5281ca3487d4c56ad4aad20ff70f82f1d7c79bcb6e7b0c2af00c8", size = 14072255, upload-time = "2024-09-04T19:14:53.495Z" },
-    { url = "https://files.pythonhosted.org/packages/f8/69/dc769cf54df8e828c0b8957b4521f35178f5bd4cc5b8fbe8a37ffd89a27c/torchvision-0.19.1-cp311-cp311-win_amd64.whl", hash = "sha256:70dea324174f5e9981b68e4b7cd524512c106ba64aedef560a86a0bbf2fbf62c", size = 1288330, upload-time = "2024-09-04T19:15:13.694Z" },
-    { url = "https://files.pythonhosted.org/packages/a4/d0/b1029ab95d9219cac2dfc0d835e9ab4cebb01f5cb6b48e736778020fb995/torchvision-0.19.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:27ece277ff0f6cdc7fed0627279c632dcb2e58187da771eca24b0fbcf3f8590d", size = 1660230, upload-time = "2024-09-04T19:15:10.799Z" },
-    { url = "https://files.pythonhosted.org/packages/8b/34/fdd2d9e01228a069b28473a7c020bf1812c8ecab8565666feb247659ed30/torchvision-0.19.1-cp312-cp312-manylinux1_x86_64.whl", hash = "sha256:c659ff92a61f188a1a7baef2850f3c0b6c85685447453c03d0e645ba8f1dcc1c", size = 7026404, upload-time = "2024-09-04T19:15:06.316Z" },
-    { url = "https://files.pythonhosted.org/packages/da/b2/9da42d67dfc30d9e3b161f7a37f6c7eca86a80e6caef4a9aa11727faa4f5/torchvision-0.19.1-cp312-cp312-manylinux2014_aarch64.whl", hash = "sha256:c07bf43c2a145d792ecd9d0503d6c73577147ece508d45600d8aac77e4cdfcf9", size = 14072022, upload-time = "2024-09-04T19:14:59.312Z" },
-    { url = "https://files.pythonhosted.org/packages/6b/b2/fd577e1622b43cdeb74782a60cea4909f88f471813c215ea7b4e7ea84a74/torchvision-0.19.1-cp312-cp312-win_amd64.whl", hash = "sha256:b4283d283675556bb0eae31d29996f53861b17cbdcdf3509e6bc050414ac9289", size = 1288328, upload-time = "2024-09-04T19:15:04.278Z" },
-]
-
-[[package]]
-name = "torchvision"
-version = "0.19.1+cpu"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
-resolution-markers = [
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
-]
-dependencies = [
-    { name = "numpy", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "pillow", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.19.1%2Bcpu-cp311-cp311-linux_x86_64.whl", hash = "sha256:6000f6747232ffc1e346caf2f3b7df30f6f084c93d5af21c5f0461dec0454a7b" },
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.19.1%2Bcpu-cp311-cp311-win_amd64.whl", hash = "sha256:49d644cd562a022b43100e0f8f7cdbb17ef69d584120ad8fcb7e327741f3605b" },
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.19.1%2Bcpu-cp312-cp312-linux_x86_64.whl", hash = "sha256:7207647b0ceb38cb72ac951e57807aaa58a6450d00ea5b542e4def992fec397b" },
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.19.1%2Bcpu-cp312-cp312-win_amd64.whl", hash = "sha256:8c826a6bd5aca0ec09f1d7122a5491527ad3eb7d733fc81281be6f0c75f9783c" },
-]
-
-[[package]]
-name = "torchvision"
 version = "0.19.1+cu124"
 source = { registry = "https://download.pytorch.org/whl/cu124" }
-resolution-markers = [
-    "python_full_version >= '3.13' and sys_platform == 'darwin'",
-    "python_full_version >= '3.13' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.13' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
-    "python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.12' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux'",
-]
 dependencies = [
-    { name = "numpy", marker = "extra == 'extra-17-baichuan-omni-1-5-cu124'" },
-    { name = "pillow", marker = "extra == 'extra-17-baichuan-omni-1-5-cu124'" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "numpy" },
+    { name = "pillow" },
+    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "platform_machine == 'aarch64' and sys_platform == 'linux'" },
+    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "platform_machine != 'aarch64' or sys_platform != 'linux'" },
 ]
 wheels = [
     { url = "https://download.pytorch.org/whl/cu124/torchvision-0.19.1%2Bcu124-cp311-cp311-linux_x86_64.whl", hash = "sha256:fc68074915f5b08c8928ee67bb12c9b8b5ef3db9b4d233cc109a7ccb13e43296" },
@@ -7122,7 +6422,7 @@ name = "tqdm"
 version = "4.66.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/58/83/6ba9844a41128c62e810fddddd72473201f3eacde02046066142a2d96cc5/tqdm-4.66.5.tar.gz", hash = "sha256:e1020aef2e5096702d8a025ac7d16b1577279c9d63f8375b63083e9a5f0fcbad", size = 169504, upload-time = "2024-08-03T22:35:40.339Z" }
 wheels = [
@@ -7268,7 +6568,7 @@ name = "tzlocal"
 version = "5.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "tzdata", marker = "sys_platform == 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "tzdata", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/04/d3/c19d65ae67636fe63953b20c2e4a8ced4497ea232c43ff8d01db16de8dc0/tzlocal-5.2.tar.gz", hash = "sha256:8d399205578f1a9342816409cc1e46a93ebd5755e39ea2d85334bea911bf0e6e", size = 30201, upload-time = "2023-10-22T17:41:38.449Z" }
 wheels = [
@@ -7374,24 +6674,6 @@ wheels = [
 ]
 
 [[package]]
-name = "vector-quantize-pytorch"
-version = "1.14.7"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "einops" },
-    { name = "einx", extra = ["torch"] },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine == 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra != 'extra-17-baichuan-omni-1-5-cpu' and extra != 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu') or (sys_platform == 'darwin' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform == 'linux' and extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "torch", version = "2.4.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(platform_machine != 'aarch64' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (sys_platform != 'linux' and extra == 'extra-17-baichuan-omni-1-5-cu124') or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/ad/59/af7e36bf728497ecdac36a3a20538ede65ac58e1aee28916938a5a685405/vector_quantize_pytorch-1.14.7.tar.gz", hash = "sha256:a2443f51370304cf8224900bb84c8ba7d134c7fd6e3a3de575a748c147684338", size = 26742, upload-time = "2024-04-16T03:53:46.248Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/b2/fa/3ca307642a603d038cf49dfd9f721953ad01383cfa2849a55e73ee0b7dae/vector_quantize_pytorch-1.14.7-py3-none-any.whl", hash = "sha256:f0237ceb447fbcb25696fecc543bd07e6a54d5853ac16ca36e1b6e981d908915", size = 28319, upload-time = "2024-04-16T03:53:43.61Z" },
-]
-
-[[package]]
 name = "video2dataset"
 version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -7478,7 +6760,7 @@ name = "wasabi"
 version = "1.1.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/ac/f9/054e6e2f1071e963b5e746b48d1e3727470b2a490834d18ad92364929db3/wasabi-1.1.3.tar.gz", hash = "sha256:4bb3008f003809db0c3e28b4daf20906ea871a2bb43f9914197d540f4f2e0878", size = 30391, upload-time = "2024-05-31T16:56:18.99Z" }
 wheels = [
@@ -7782,8 +7064,8 @@ name = "yt-dlp"
 version = "2024.8.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "brotli", marker = "implementation_name == 'cpython' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
-    { name = "brotlicffi", marker = "implementation_name != 'cpython' or (extra == 'extra-17-baichuan-omni-1-5-cpu' and extra == 'extra-17-baichuan-omni-1-5-cu124')" },
+    { name = "brotli", marker = "implementation_name == 'cpython'" },
+    { name = "brotlicffi", marker = "implementation_name != 'cpython'" },
     { name = "certifi" },
     { name = "mutagen" },
     { name = "pycryptodomex" },
